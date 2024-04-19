@@ -8,13 +8,14 @@ import Products from './components/Products';
 import Cart from './components/Cart';
 import Checkout from './components/Checkout'; 
 import OrdersPage from './components/OrdersPage';
+import DesignUpload from './components/DesignUpload';
+import DesignList from './components/DesignList';
 import './App.css';
 
 function App() {
   const [cartItems, setCartItems] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [orders, setOrders] = useState([]);
-
   const addToCart = (product) => {
     setCartItems([...cartItems, product]);
   };
@@ -35,7 +36,15 @@ function App() {
     const updatedOrders = orders.filter(order => order.id !== orderId);
     setOrders(updatedOrders);
   };
-
+  const [designs, setDesigns] = useState([]);
+  const handleUpload = (uploadedDesign) => {
+  setDesigns([...designs, uploadedDesign]);
+};
+const handleRemove = (index) => {
+  const updatedDesigns = [...designs];
+  updatedDesigns.splice(index, 1);
+  setDesigns(updatedDesigns);
+};
   return (
     <Router>
       <div className="app-container">
@@ -47,9 +56,12 @@ function App() {
               <li><Link to="/login">Login</Link></li>
               <li><Link to="/signup">Signup</Link></li>
               <li><Link to="/products">Products</Link></li>
+              <li><Link to="/design-upload">DesignBox</Link></li>
+              <li><Link to="/design-list">DesignVault</Link></li>
               <li><Link to="/cart">Cart ({cartItems.length})</Link></li>
               <li><Link to="/orders">Orders</Link></li>
               <li><Link to="/about">About</Link></li>
+            
             </ul>
           </nav>
         </header>
@@ -77,6 +89,8 @@ function App() {
               path="/orders"
               element={<OrdersPage orders={orders} onCancelOrder={handleCancelOrder} />}
             />
+            <Route path="/design-upload" element={<DesignUpload onUpload={handleUpload} />} />
+            <Route path="/design-list" element={<DesignList designs={designs} onRemove={handleRemove} />} />
           </Routes>
         </main>
 
