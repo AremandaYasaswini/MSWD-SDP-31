@@ -21,7 +21,7 @@ function DesignUpload({ onUpload }) {
       // If the upload is successful, set the success state to true
       setUploadSuccess(true);
       // Navigate to the next page after a slight delay to allow the user to see the success message
-      setTimeout(() => navigate('/design-list'), 2000);
+      
     } catch (error) {
       // Handle any errors during upload
       console.error('Upload failed:', error);
