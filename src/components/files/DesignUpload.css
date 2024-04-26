@@ -1,51 +1,48 @@
-/* DesignUpload.css */
+
 body, html {
-  height: 100%; /* Full height of the viewport */
-  margin: 0; /* Remove default margin */
+  height: 100%; 
+  margin: 0; 
 }
 
-/* This ensures that the flex container covers the entire viewport */
 .design-upload-container {
   display: flex;
   flex-direction: column;
-  align-items: flex-start; /* Align items to the start of the container (left side) */
-  justify-content: flex-start; /* Align items to the start of the container (top side) */
-  width: 100%; /* Full width */
-  padding: 40px; /* Increased padding */
-  box-sizing: border-box; /* Include padding in the width and height */
+  align-items: flex-start; 
+  justify-content: flex-start; 
+  width: 100%; 
+  padding: 40px; 
+  box-sizing: border-box; 
 }
 
-/* Style for the file input element */
 input[type="file"] {
-  margin-bottom: 30px; /* Increased space between the input and the button */
+  margin-bottom: 30px; 
   cursor: pointer;
-  font-size: 1.2rem; /* Larger font size for better readability */
-  padding: 15px 25px; /* Increased padding for a larger touch area */
+  font-size: 1.2rem; 
+  padding: 15px 25px; 
 }
 
 .upload-instructions {
-  color: #333; /* Dark grey color for better readability */
-  margin-bottom: 30px; /* Increased bottom margin */
+  color: #333; 
+  margin-bottom: 30px;
   text-align: center;
-  padding: 0 20px; /* Added padding for better text display */
+  padding: 0 20px;
 }
 
-/* Style for the upload button */
 button {
-  font-size: 1.2rem; /* Larger font size for better readability */
-  padding: 20px 40px; /* Increased padding for a bigger button */
-  min-width: 180px; /* Increased minimum width for the button */
+  font-size: 1.2rem;
+  padding: 20px 40px; 
+  min-width: 180px; 
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.3s ease;
   border: none;
   border-radius: 5px;
-  background-color: #007bff; /* Blue background */
-  color: white; /* White text */
-  margin-bottom: 30px; /* Added bottom margin for spacing */
-  align-self: center; /* Center the button within the flex container */
+  background-color: #007bff; 
+  color: white; 
+  margin-bottom: 30px; 
+  align-self: center; 
 }
 
 button:hover {
-  background-color: #0056b3; /* Darker blue on hover */
-  transform: scale(1.05); /* Slight increase in size on hover */
+  background-color: #0056b3; 
+  transform: scale(1.05); 
 }
