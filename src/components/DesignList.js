@@ -17,7 +17,7 @@ function DesignList({ designs, onRemove }) {
               alt={`Design ${index + 1}`}
               style={{ maxWidth: '200px' }}
             />
-            <button onClick={() => handleRemove(index)}>Remove</button> {/* Add remove button */}
+            <button onClick={() => handleRemove(index)}>Remove</button> 
           </li>
         ))}
       </ul>
