@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react'; 
 import './files/Product.css';
 import { useNavigate } from 'react-router-dom';
 import p1 from './Images/p1.jpg'; 
@@ -58,69 +58,151 @@ const Products = ({ addToCart }) => {
   const handleBuyNow = (productId) => {
     navigate('/checkout', { state: { productId } });
   };
+  const [minPrice, setMinPrice] = useState(0);
+  const [maxPrice, setMaxPrice] = useState(100000); // Set max price according to your needs
+  const [genderFilter, setGenderFilter] = useState(null);
+  const [showFilteredProducts, setShowFilteredProducts] = useState(false);
+  const [filteredProducts, setFilteredProducts] = useState([]);
   
-  
-  
-
   const productsData = [
-    { id: 1, name: 'Product 1', price: '$20', image: p1 },
-    { id: 2, name: 'Product 2', price: '$30', image: p2 },
-    { id: 3, name: 'Product 3', price: '$25', image: p3 },
-    { id: 4, name: 'Product 4', price: '$25', image: p4 },
-    { id: 5, name: 'Product 5', price: '$25', image: p5 },
-    { id: 6, name: 'Product 6', price: '$25', image: p6 },
-    { id: 7, name: 'Product 7', price: '$25', image: p7 },
-    { id: 8, name: 'Product 8', price: '$25', image: p8 },
-    { id: 9, name: 'Product 9', price: '$25', image: p9 },
-    { id: 10, name: 'Product 10', price: '$25', image: p10 },
-    { id: 11, name: 'Product 11', price: '$25', image: p11 },
-    { id: 12, name: 'Product 12', price: '$25', image: p12 },
-    { id: 13, name: 'Product 13', price: '$25', image: p13 },
-    { id: 14, name: 'Product 14', price: '$25', image: p14 },
-    { id: 15, name: 'Product 15', price: '$25', image: p15 },
-    { id: 16, name: 'Product 16', price: '$25', image: p16 },
-    { id: 17, name: 'Product 17', price: '$25', image: p17 },
-    { id: 18, name: 'Product 18', price: '$25', image: p18 },
-    { id: 19, name: 'Product 19', price: '$25', image: p19 },
-    { id: 20, name: 'Product 20', price: '$25', image: p20 },
-    { id: 21, name: 'Product 21', price: '$25', image: p21 },
-    { id: 22, name: 'Product 22', price: '$25', image: p22 },
-    { id: 23, name: 'Product 23', price: '$25', image: p23 },
-    { id: 24, name: 'Product 24', price: '$25', image: p24 },
-    { id: 25, name: 'Product 25', price: '$25', image: p25 },
-    { id: 26, name: 'Product 26', price: '$25', image: p26 },
-    { id: 27, name: 'Product 27', price: '$25', image: p27 },
-    { id: 28, name: 'Product 28', price: '$25', image: p28 },
-    { id: 29, name: 'Product 29', price: '$25', image: p29 },
-    { id: 30, name: 'Product 30', price: '$25', image: p30 },
-    { id: 31, name: 'Product 31', price: '$25', image: p31 },
-    { id: 32, name: 'Product 32', price: '$25', image: p32 },
-    { id: 33, name: 'Product 33', price: '$25', image: p33 },
-    { id: 34, name: 'Product 34', price: '$25', image: p34 },
-    { id: 35, name: 'Product 35', price: '$25', image: p35 },
-    { id: 36, name: 'Product 36', price: '$25', image: p36 },
-    { id: 37, name: 'Product 37', price: '$25', image: p37 },
-    { id: 38, name: 'Product 38', price: '$25', image: p38 },
-    { id: 39, name: 'Product 39', price: '$25', image: p39 },
-    { id: 40, name: 'Product 40', price: '$25', image: p40 },
-    { id: 41, name: 'Product 41', price: '$25', image: p41 },
-    { id: 42, name: 'Product 42', price: '$25', image: p42 },
-    { id: 43, name: 'Product 43', price: '$25', image: p43 },
-    { id: 44, name: 'Product 44', price: '$25', image: p44 },
-    { id: 45, name: 'Product 45', price: '$25', image: p45 },
-    { id: 46, name: 'Product 46', price: '$25', image: p46 },
-    { id: 47, name: 'Product 47', price: '$25', image: p47 },
-    { id: 48, name: 'Product 48', price: '$25', image: p48 },
-    { id: 49, name: 'Product 49', price: '$25', image: p49 },
-    { id: 50, name: 'Product 50', price: '$25', image: p50 }
-
-
+    { id: 1, name: 'Product 1', price: '₹999/-', image: p1, category: 'women' },
+    { id: 2, name: 'Product 2', price: '₹1200/-', image: p2, category: 'women' },
+    { id: 3, name: 'Product 3', price: '₹1499/-', image: p3, category: 'women' },
+    { id: 4, name: 'Product 4', price: '₹1299/-', image: p4, category: 'women' },
+    { id: 5, name: 'Product 5', price: '₹1499/-', image: p5, category: 'women' },
+    { id: 6, name: 'Product 6', price: '₹1999/-', image: p6, category: 'women' },
+    { id: 7, name: 'Product 7', price: '₹1500/-', image: p7, category: 'women' },
+    { id: 8, name: 'Product 8', price: '₹2500/-', image: p8, category: 'women' },
+    { id: 9, name: 'Product 9', price: '₹2600/-', image: p9, category: 'women' },
+    { id: 10, name: 'Product 10', price: '₹4000/-', image: p10, category: 'kids' },
+    { id: 11, name: 'Product 11', price: '₹1600/-', image: p11, category: 'women' },
+    { id: 12, name: 'Product 12', price: '₹2000/-', image: p12, category: 'kids' },
+    { id: 13, name: 'Product 13', price: '₹1000/-', image: p13, category: 'kids' },
+    { id: 14, name: 'Product 14', price: '₹2000/-', image: p14, category: 'kids' },
+    { id: 15, name: 'Product 15', price: '₹1500/-', image: p15, category: 'kids' },
+    { id: 16, name: 'Product 16', price: '₹1000/-', image: p16, category: 'kids' },
+    { id: 17, name: 'Product 17', price: '₹2000/-', image: p17, category: 'kids' },
+    { id: 18, name: 'Product 18', price: '₹3000/-', image: p18, category: 'kids' },
+    { id: 19, name: 'Product 19', price: '₹2500/-', image: p19, category: 'kids' },
+    { id: 20, name: 'Product 20', price: '₹2000/-', image: p20, category: 'kids' },
+    { id: 21, name: 'Product 21', price: '₹1500/-', image: p21, category: 'kids' },
+    { id: 22, name: 'Product 22', price: '₹2000/-', image: p22, category: 'kids' },
+    { id: 23, name: 'Product 23', price: '₹5000/-', image: p23, category: 'men' },
+    { id: 24, name: 'Product 24', price: '₹10000/-', image: p24, category: 'men' },
+    { id: 25, name: 'Product 25', price: '₹10000/-', image: p25, category: 'men' },
+    { id: 26, name: 'Product 26', price: '₹8000/-', image: p26, category: 'men' },
+    { id: 27, name: 'Product 27', price: '₹1500/-', image: p27, category: 'men' },
+    { id: 28, name: 'Product 28', price: '₹1000/-', image: p28, category: 'men' },
+    { id: 29, name: 'Product 29', price: '₹2000/-', image: p29, category: 'men' },
+    { id: 30, name: 'Product 30', price: '₹1999/-', image: p30, category: 'men' },
+    { id: 31, name: 'Product 31', price: '₹999/-', image: p31, category: 'men' },
+    { id: 32, name: 'Product 32', price: '₹899/-', image: p32, category: 'men' },
+    { id: 33, name: 'Product 33', price: '₹599/-', image: p33, category: 'kids' },
+    { id: 34, name: 'Product 34', price: '₹699/-', image: p34, category: 'kids' },
+    { id: 35, name: 'Product 35', price: '₹799/-', image: p35, category: 'kids' },
+    { id: 36, name: 'Product 36', price: '₹499/-', image: p36, category: 'kids' },
+    { id: 37, name: 'Product 37', price: '₹699/-', image: p37, category: 'kids' },
+    { id: 38, name: 'Product 38', price: '₹399/-', image: p38, category: 'kids' },
+    { id: 39, name: 'Product 39', price: '₹299/-', image: p39, category: 'kids' },
+    { id: 40, name: 'Product 40', price: '₹499/-', image: p40, category: 'kids' },
+    { id: 41, name: 'Product 41', price: '₹1999/-', image: p41, category: 'kids' },
+    { id: 42, name: 'Product 42', price: '₹999/-', image: p42, category: 'kids' },
+    { id: 43, name: 'Product 43', price: '₹399/-', image: p43, category: 'kids' },
+    { id: 44, name: 'Product 44', price: '₹400/-', image: p44, category: 'kids' },
+    { id: 45, name: 'Product 45', price: '₹499/-', image: p45, category: 'kids' },
+    { id: 46, name: 'Product 46', price: '₹1300/-', image: p46, category: 'kids' },
+    { id: 47, name: 'Product 47', price: '₹15000/-', image: p47, category: 'women' },
+    { id: 48, name: 'Product 48', price: '₹20000/-', image: p48, category: 'women' },
+    { id: 49, name: 'Product 49', price: '₹9000/-', image: p49, category: 'women' },
+    { id: 50, name: 'Product 50', price: '₹3999/-', image: p50, category: 'women' }
   ];
+  const applyFilter = () => {
+    const filtered = productsData.filter(product => {
+      const price = parseInt(product.price.replace('₹', '').replace('/-', '').replace(',', ''));
+      const withinPriceRange = price >= minPrice && price <= maxPrice;
+      const matchGender = genderFilter ? product.category === genderFilter : true;
+      return withinPriceRange && matchGender;
+    });
+    setFilteredProducts(filtered);
+    setShowFilteredProducts(true);
+  };
+
+  const resetFilter = () => {
+    setMinPrice(0);
+    setMaxPrice(100000);
+    setGenderFilter('');
+    setShowFilteredProducts(false);
+  };
+
   return (
     <div className="products-container">
       <h2>Welcome to our Fashion Store!</h2>
+      <div className="filter-button">
+        <button onClick={showFilteredProducts ? resetFilter : applyFilter}>
+          {showFilteredProducts ? "Show All Products" : "Filter Products"}
+        </button>
+      </div>
+      {showFilteredProducts && (
+        <div className="filter">
+          <input
+            type="number"
+            placeholder="Min Price"
+            value={minPrice}
+            onChange={(e) => setMinPrice(parseInt(e.target.value))}
+          />
+          <input
+            type="number"
+            placeholder="Max Price"
+            value={maxPrice}
+            onChange={(e) => setMaxPrice(parseInt(e.target.value))}
+          />
+          <div className="gender-filter">
+            <label>
+              <input
+                type="radio"
+                name="gender"
+                value=""
+                checked={genderFilter === ''}
+                onChange={() => setGenderFilter('')}
+              />
+              All Genders
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="gender"
+                value="men"
+                checked={genderFilter === 'men'}
+                onChange={() => setGenderFilter('men')}
+              />
+              Men
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="gender"
+                value="women"
+                checked={genderFilter === 'women'}
+                onChange={() => setGenderFilter('women')}
+              />
+              Women
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="gender"
+                value="kids"
+                checked={genderFilter === 'kids'}
+                onChange={() => setGenderFilter('kids')}
+              />
+              Kids
+            </label>
+          </div>
+          <button onClick={applyFilter}>Apply</button>
+        </div>
+      )}
       <div className="product-grid">
-        {productsData.map((product) => (
+        {(showFilteredProducts ? filteredProducts : productsData).map((product) => (
           <div key={product.id} className="product-card">
             <img src={product.image} alt={product.name} />
             <div className="product-info">
