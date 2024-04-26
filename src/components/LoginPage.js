@@ -6,36 +6,26 @@ function Login() {
   
 
   const handleLogin = () => {
-    // Basic validation: Check if email and password fields are not empty
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
   
     if (email.trim() === '') {
-      // If email or password is empty, do not proceed with login
       alert('Please enter valid email ');
       return;
     }
     if ( password.trim() === '') {
-      // If email or password is empty, do not proceed with login
       alert('Please enter password');
       return;
     }
-  
-    // Check if the email contains the "@" symbol
     if (!email.includes('@gmail.com')) {
       alert('Please enter a valid email address');
       return;
     }
-  
-    // Check if the password meets the complexity requirements
     const passwordRegex = /^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/;
     if (!passwordRegex.test(password)) {
       alert('Password must contain at least one uppercase letter, one number, one special symbol, and be at least 8 characters long');
       return;
     }
-  
-    // Perform login actions here (e.g., validate credentials, authenticate user)
-    // For demo purposes, I'm setting loggedIn to true immediately
     setLoggedIn(true);
     window.location.href = '/';
   };
