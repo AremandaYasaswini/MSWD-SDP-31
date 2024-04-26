@@ -3,10 +3,10 @@ import React from 'react';
 function OrdersPage({ orders, onCancelOrder }) {
 
   const handleCancelOrder = (orderId) => {
-    // Show a confirmation dialog before canceling the order
+  
     const isConfirmed = window.confirm('Are you sure you want to cancel this order?');
     if (isConfirmed) {
-      // Call the onCancelOrder function with the orderId
+      
       onCancelOrder(orderId);
     }
   };
