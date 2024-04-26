@@ -1,5 +1,5 @@
 import React from 'react';
-import './files/Cart.css'; // Import your CSS file
+import './files/Cart.css';
 
 const Cart = ({ cartItems, removeFromCart }) => {
   const handleRemove = (itemId) => {
