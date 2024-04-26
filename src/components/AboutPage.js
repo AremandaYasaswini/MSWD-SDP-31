@@ -1,8 +1,7 @@
-// About.js
 import React from 'react';
 import './files/About.css';
-import Instagram from './Images/instagram.jpeg'; // Import the Instagram image
-import Twitter from './Images/twitter.png'; // Import the Twitter image
+import Instagram from './Images/instagram.jpeg'; 
+import Twitter from './Images/twitter.png'; 
 
 function About() {
   return (
@@ -22,10 +21,10 @@ function About() {
       <h3>Connect With Us</h3>
       <div className="social-icons">
         <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
-          <img src={Instagram} alt="Instagram" /> {/* Use curly braces to reference the imported image */}
+          <img src={Instagram} alt="Instagram" /> 
         </a>
         <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
-          <img src={Twitter} alt="Twitter" /> {/* Use curly braces to reference the imported image */}
+          <img src={Twitter} alt="Twitter" /> 
         </a>
       </div>
 
