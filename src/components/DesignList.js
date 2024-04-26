@@ -2,7 +2,6 @@ import React from 'react';
 
 function DesignList({ designs, onRemove }) {
   const handleRemove = (index) => {
-    // Call the onRemove function with the index of the design to remove
     onRemove(index);
   };
 
