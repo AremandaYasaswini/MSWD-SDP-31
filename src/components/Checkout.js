@@ -19,8 +19,6 @@ function Checkout({ addToOrders }) {
 
   useEffect(() => {
     const getProductById = async (id) => {
-      // Fetch product details using the productId
-      // Replace this dummy product with actual fetching logic
       const dummyProduct = {
         id: id,
         name: `Product 1`,
@@ -41,8 +39,6 @@ function Checkout({ addToOrders }) {
       shippingAddress,
       paymentMethod
     });
-
-    // Create the order object with the correct structure
     const order = {
       product: product,
       quantity: quantity,
@@ -51,7 +47,7 @@ function Checkout({ addToOrders }) {
       paymentMethod: paymentMethod
     };
 
-    // Add the order to the orders list
+    
     addToOrders(order);
 
     setOrderPlaced(true);
