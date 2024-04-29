@@ -37,7 +37,7 @@ function Signup() {
 
 
     alert('Signup successful!'); // Placeholder for successful signup notification
-    window.location.href = '/login';
+    navigate('/login');
   };
 
   return (
