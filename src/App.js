@@ -56,8 +56,8 @@ const handleRemove = (index) => {
               <li><Link to="/login">Login</Link></li>
               <li><Link to="/signup">Signup</Link></li>
               <li><Link to="/products">Products</Link></li>
-              <li><Link to="/design-upload">DesignBox</Link></li>
-              <li><Link to="/design-list">DesignVault</Link></li>
+              <li><Link to="/design-upload">DesignUpload</Link></li>
+              <li><Link to="/design-list">DesignList</Link></li>
               <li><Link to="/cart">Cart ({cartItems.length})</Link></li>
               <li><Link to="/orders">Orders</Link></li>
               <li><Link to="/about">About</Link></li>
