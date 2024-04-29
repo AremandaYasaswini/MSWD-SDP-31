@@ -7,9 +7,9 @@ function Checkout({ addToOrders }) {
   const [quantity, setQuantity] = useState(1);
   const [size, setSize] = useState('');
   const [shippingAddress, setShippingAddress] = useState({
-    city: '',
-    state: '',
     country: '',
+    state: '',
+    city: '',
     landmark: ''
   });
   const [paymentMethod, setPaymentMethod] = useState('');
@@ -22,7 +22,7 @@ function Checkout({ addToOrders }) {
       const dummyProduct = {
         id: id,
         name: `Product 1`,
-        price: `$20`,
+        price: `999`,
       };
       setProduct(dummyProduct);
     };
@@ -111,11 +111,11 @@ function Checkout({ addToOrders }) {
           </fieldset>
           <br />
           <label>
-            City:
+            Country:
             <input
               type="text"
-              value={shippingAddress.city}
-              onChange={(e) => setShippingAddress({ ...shippingAddress, city: e.target.value })}
+              value={shippingAddress.country}
+              onChange={(e) => setShippingAddress({ ...shippingAddress, country: e.target.value })}
               required
             />
           </label>
@@ -131,11 +131,11 @@ function Checkout({ addToOrders }) {
           </label>
           <br />
           <label>
-            Country:
+            City:
             <input
               type="text"
-              value={shippingAddress.country}
-              onChange={(e) => setShippingAddress({ ...shippingAddress, country: e.target.value })}
+              value={shippingAddress.city}
+              onChange={(e) => setShippingAddress({ ...shippingAddress, city: e.target.value })}
               required
             />
           </label>
